@@ -12,6 +12,7 @@ import { IconField } from 'primeng/iconfield';
 import { InputIcon } from 'primeng/inputicon';
 import { MenubarModule } from 'primeng/menubar';
 import { Menubar } from 'primeng/menubar';
+import { MegaMenuModule } from 'primeng/megamenu';
 
 const mismodulos: any = [
   ButtonModule,
@@ -25,6 +26,7 @@ const mismodulos: any = [
   InputIcon,
   MenubarModule,
   Menubar,
+  MegaMenuModule
 ];
 
 @NgModule({

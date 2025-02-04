@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { ModprimengModule} from './modprimeng.module';
 import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-root',
@@ -37,4 +38,6 @@ export class AppComponent {
   showBottomRight() {
       this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Operacion Exitosa', key: 'br', life: 3000 });
   }
+
+
 }

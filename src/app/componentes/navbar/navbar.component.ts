@@ -6,28 +6,31 @@ import { SplitButton } from 'primeng/splitbutton';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconField } from 'primeng/iconfield';
 import { InputIcon } from 'primeng/inputicon';
+import { MegaMenuItem } from 'primeng/api';
+import { MegaMenu } from 'primeng/megamenu';
 
 @Component({
   selector: 'app-navbar',
-  imports: [Toolbar, ButtonModule, SplitButton, InputTextModule, IconField, InputIcon],
+  imports: [ ButtonModule, InputTextModule, MegaMenu,SplitButton, Toolbar, IconField,InputIcon],
   standalone: true,
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit{
-  items: MenuItem[] | undefined;
+    items: MenuItem[] | undefined;
 
     ngOnInit() {
         this.items = [
             {
-                label: 'Update',
-                icon: 'pi pi-refresh'
+                label: 'Ingresar',
+                icon: 'pi pi-user',
+                routerLink: '/login'
             },
             {
-                label: 'Delete',
-                icon: 'pi pi-times'
+                label: 'Registrar',
+                icon: 'pi-user-plus',
+                routerLink: '/register'
             }
         ];
     }
-    
 }
