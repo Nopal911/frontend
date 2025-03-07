@@ -13,9 +13,11 @@ import { InputIcon } from 'primeng/inputicon';
 import { MenubarModule } from 'primeng/menubar';
 import { Menubar } from 'primeng/menubar';
 import { MegaMenuModule } from 'primeng/megamenu';
+import { CardModule } from 'primeng/card';
 
 const mismodulos: any = [
   ButtonModule,
+  CardModule,
   Ripple,
   ToastModule,
   ToolbarModule,

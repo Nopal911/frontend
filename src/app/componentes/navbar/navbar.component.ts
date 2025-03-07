@@ -11,7 +11,7 @@ import { MegaMenu } from 'primeng/megamenu';
 
 @Component({
   selector: 'app-navbar',
-  imports: [ ButtonModule, InputTextModule, MegaMenu,SplitButton, Toolbar, IconField,InputIcon],
+  imports: [ ButtonModule, InputTextModule,SplitButton, Toolbar, IconField,InputIcon],
   standalone: true,
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit{
             },
             {
                 label: 'Registrar',
-                icon: 'pi-user-plus',
+                icon: 'pi pi-user-plus',
                 routerLink: '/register'
             }
         ];

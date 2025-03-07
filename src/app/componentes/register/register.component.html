@@ -1,1 +1,36 @@
-<p>register works!</p>
+<p></p>
+<form [formGroup]="registroForma">
+    <p-card header="Registro" [style]="{width: '400px'}">
+        <div class="field">
+            <label for="text">Nombre</label>
+            <Input
+            type="text"
+            pInputText
+            formControlName="nombre"
+            class="w-full"
+            name="nombre"
+            placeholder="Ingresa tu nombre"
+                />
+            <label for="email">Correo electrónico</label>
+            <input 
+            type="text"
+            pInputText
+            formControlName="email"
+            class="w-full"
+            name="email"
+            placeholder="ingresar"
+            />
+            <label for="password">Contraseña</label>
+            <input type="password"
+            pInputText
+            formControlName="password"
+            class="w-full"
+            name="password"
+            placeholder="contraseña"
+            />
+            <p>
+            <p-button label="Registrarse" styleClass="w-full"></p-button>
+            </p>
+        </div>
+    </p-card>
+</form>
