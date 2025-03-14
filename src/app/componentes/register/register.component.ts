@@ -1,22 +1,72 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModprimengModule } from '../../modprimeng.module';
-import { RouterModule } from '@angular/router';
-
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';  // Necesario para *ngIf y otras directivas comunes
+import { passwordMatchValidator } from '../../shared/password-match.directives';
+import { AuthService } from '../../servicios/auth.service';
+import { MessageService } from 'primeng/api';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule,ModprimengModule,RouterModule],
+  imports: [ReactiveFormsModule, ModprimengModule, RouterModule, CommonModule],  // Importamos CommonModule para *ngIf
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
   registroForma: FormGroup;
-  constructor(private fb:FormBuilder){
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private messageService: MessageService, private router:Router ) {
     this.registroForma = this.fb.group({
-      nombre:['', [Validators.required, Validators.minLength(3),Validators.maxLength(30)]],
+      nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
-    })
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern('.*[a-z].*'), // Al menos una letra minúscula
+        Validators.pattern('.*[A-Z].*'), // Al menos una letra mayúscula
+        Validators.pattern('.*[!@#$%^&*(),.?":{}|<>].*') // Al menos un carácter especial
+      ]],
+      confirmPassword: ['', [Validators.required]]
+    }, { validators: passwordMatchValidator});
   }
+
+  passwordsMatch(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordMismatch: true };
+  }
+
+  get nombre() {
+    return this.registroForma.controls['nombre'];
+  }
+
+  get email() {
+    return this.registroForma.controls['email'];
+  }
+
+  get password() {
+    return this.registroForma.controls['password'];
+  }
+
+  get confirmPassword() {
+    return this.registroForma.controls['confirmPassword'];
+  }
+
+  enviarRegistro() {
+    const data = {...this.registroForma.value};
+    
+    delete data.confirmPassword;
+
+    this.authService.registroUsuario(data as User).subscribe(
+      response => {
+        console.log(response)
+        this.messageService.add({severity:'success', summary: 'success',
+          detail: 'Registro Agregado con éxito'
+        })
+      },
+      error => console.log(error) //me quede en este paso, pagina 52
+    )
+   }
 }

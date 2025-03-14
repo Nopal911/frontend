@@ -1,5 +1,5 @@
 <p></p>
-<form [formGroup]="loginForma">
+<form [formGroup]="loginForma" (ngSubmit)="login()">
     <p-card header="Ingresar al sistema" [style]="{width: '400px'}">
         <div class="field">
             <label for="email">Correo electrónico</label>
@@ -35,7 +35,7 @@
             </small>
         </div>
         <p>
-            <p-button label="Ingresar" styleClass="w-full" [disabled]="loginForma.invalid"></p-button>
+            <p-button label="Ingresar" styleClass="w-full" [disabled]="loginForma.invalid" type="submit"></p-button>
         </p>
         <div class="mt-2">
             No tienes cuenta? <a routerLink="/register">¡Regístrate!</a>
