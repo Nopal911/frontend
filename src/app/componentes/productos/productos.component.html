@@ -1,0 +1,55 @@
+<p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="left">
+      <p-button icon="pi pi-plus" (click)="showDialog()" label="Nuevo Producto"></p-button>
+    </ng-template>
+  </p-toolbar>
+  
+  <!-- Formulario de nuevo producto -->
+  <p-dialog [(visible)]="displayDialog" [modal]="true" [closable]="false" [style]="{ width: '500px' }">
+    <p-header>Nuevo Producto</p-header>
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" pInputText [(ngModel)]="newProduct.nombre">
+      </div>
+      <div class="p-field">
+        <label for="descripcion">Descripción</label>
+        <input id="descripcion" type="text" pInputText [(ngModel)]="newProduct.descripcion">
+      </div>
+      <div class="p-field">
+        <label for="precio">Precio</label>
+        <input id="precio" type="number" pInputText [(ngModel)]="newProduct.precio">
+      </div>
+      <div class="p-field">
+        <label for="categoria">Categoría</label>
+        <input id="categoria" type="text" pInputText [(ngModel)]="newProduct.categoria">
+      </div>
+      <div class="p-field">
+        <label for="estadoInventario">Estado de Inventario</label>
+        <p-dropdown [options]="statuses" [(ngModel)]="newProduct.estadoInventario"></p-dropdown>
+      </div>
+    </div>
+    <p-footer>
+      <p-button label="Cancelar" icon="pi pi-times" (click)="hideDialog()"></p-button>
+      <p-button label="Guardar" icon="pi pi-check" (click)="saveProduct()"></p-button>
+    </p-footer>
+  </p-dialog>
+  
+  <!-- Tabla de productos -->
+  <p-table [columns]="cols" [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{ col.header }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          {{ rowData[col.field] }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  

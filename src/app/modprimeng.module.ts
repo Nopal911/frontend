@@ -14,6 +14,12 @@ import { MenubarModule } from 'primeng/menubar';
 import { Menubar } from 'primeng/menubar';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { CardModule } from 'primeng/card';
+import { Textarea } from 'primeng/inputtextarea';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { DialogModule } from 'primeng/dialog';
+import { ImageModule } from 'primeng/image';
+import { FileUploadModule } from 'primeng/fileupload';
+import { TableModule } from 'primeng/table';
 
 const mismodulos: any = [
   ButtonModule,
@@ -28,7 +34,13 @@ const mismodulos: any = [
   InputIcon,
   MenubarModule,
   Menubar,
-  MegaMenuModule
+  MegaMenuModule,
+  Textarea,
+  ConfirmPopupModule,
+  DialogModule,
+  ImageModule,
+  FileUploadModule,
+  TableModule
 ];
 
 @NgModule({

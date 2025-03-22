@@ -14,7 +14,7 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class AppComponent {
-  title = 'shoponline_jaar';
+  title = 'shoponline_ahg';
 
   constructor(private messageService: MessageService) {}
 

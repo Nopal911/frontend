@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ModprimengModule } from '../../modprimeng.module';
 import { RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { passwordMatchValidator } from '../../shared/password-match.directives';
 import { AuthService } from '../../servicios/auth.service';
 import { MessageService } from 'primeng/api';
 import { User } from '../../interfaces/user';
@@ -40,7 +41,7 @@ export class LoginComponent {
     const { email, password } = this.loginForma.value;
     const usuario: User = {
       id: "1",
-      fullname: "",
+      full_name: "",
       email: email,
       password: password
     };
@@ -54,7 +55,7 @@ export class LoginComponent {
         if (mensaje.respuesta === 1) {
           sessionStorage.setItem('email', email as string);
           this.messageService.add({ severity: 'success', summary: 'Success', detail: mensaje.message });
-          this.router.navigate(['/home']);
+          this.router.navigate(['/productlist']); //cambie /home por /productlist
         } else {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Email o Contraseña Incorrecta' });
         }

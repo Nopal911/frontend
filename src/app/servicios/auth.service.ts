@@ -19,8 +19,10 @@ export class AuthService {
 
   getUserByEmail(usuario: User): Observable<Mensaje> {
     
-    const path = `${this.baseURL}/usuario/email`
+    /* hoy comente todo estoconst path = `${this.baseURL}/usuario/email`
     console.log(path);
-    return this.http.post<Mensaje>(path, usuario);
+    return this.http.post<Mensaje>(path, usuario);*/
+
+    return this.http.post<Mensaje>(`${this.baseURL}/usuario/email`, usuario);
   }
 }

@@ -19,7 +19,7 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private messageService: MessageService, private router:Router ) {
     this.registroForma = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      full_name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required,
@@ -38,7 +38,7 @@ export class RegisterComponent {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
-  get nombre() {
+  get full_name() {
     return this.registroForma.controls['nombre'];
   }
 
@@ -56,8 +56,9 @@ export class RegisterComponent {
 
   enviarRegistro() {
     const data = {...this.registroForma.value};
-    
+    console.log('Datos: ', data)
     delete data.confirmPassword;
+    data.id = "1"
 
     this.authService.registroUsuario(data as User).subscribe(
       response => {

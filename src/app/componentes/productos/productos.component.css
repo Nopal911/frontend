@@ -1,0 +1,11 @@
+/* Asegúrate de que el cuadro de diálogo se vea correctamente */
+.p-dialog .p-header {
+    background-color: #f1f1f1;
+    color: #333;
+  }
+  
+  .p-dialog .p-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
